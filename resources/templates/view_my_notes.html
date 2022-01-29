@@ -1,0 +1,36 @@
+{% extends 'user_base.html' %}
+
+{% block content %}
+<br>
+<h1>My notes</h1>
+<table style="width:100%">
+    <tr>
+      <th>Sl. No.</th>
+      <th>Uploaddate</th>
+      <th>Branch</th> 
+      <th>Subject</th>
+      <th>NotesFile</th>
+      <th>File Type</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+    
+    {% for note in notes %}
+
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ note.uploaddata }}</td>
+        <td>{{ note.branch }}</td>
+        <td>{{ note.subject }}</td>
+        <td><a href="{{ note.notesfile.url }}" download>Download</a></td>
+        <td>{{ note.filetype }}</td>
+        <td>{{ note.description }}</td>
+        <td>{{ note.status }}</td>
+        <td><a href="{% url 'delete_my_notes' note.id %}" onclick="return confirm('Are you sure?')">Delete</a></td>
+    </tr>
+
+    {% endfor %}
+  </table>
+
+{% endblock content %}

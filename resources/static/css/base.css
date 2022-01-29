@@ -1,0 +1,113 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0px;
+    background-color: aliceblue;
+    height: 60px;
+}
+
+nav img{
+    height: 56px;
+    width: 56px;
+    padding: 0px 10px;
+    border-radius: 25px;
+}
+
+.flexit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-item{
+    list-style-type: none;
+    padding: 0px 10px;
+}
+
+.nav-item-link{
+    text-decoration: none;
+    color: black;
+    padding: 0px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 60px; */
+}
+
+.nav-item-link:hover{
+    color: green;
+    /* font-weight: bold; */
+    /* background-color: yellow; */
+}
+
+.left{
+    width: 10%;
+    margin: auto;
+}
+
+.center{
+    width: 30%;
+    margin: auto;
+}
+
+.right{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btns{
+    padding: 0px 10px;
+}
+
+button{
+    height: 30px;
+    padding: 5px;
+    background-color: green;
+    border: 1px solid white;
+    border-radius: 8px;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button a{
+    text-decoration: none;
+    color: yellow;
+}
+
+.form-txt{
+    padding: 0px 0px 10px 0px;
+}
+
+input{
+    height: 20px;
+    padding: 5px 5px;
+    border-radius: 8px;
+    width: 200px;
+}
+
+.input-box{
+    padding: 10px 0px;
+}
+
+select{
+    height: 32px;
+    width: 212px;
+    padding: 5px 5px;
+    border-radius: 8px;
+    background-color: white;
+    border: 2px solid black;
+}
+

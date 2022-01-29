@@ -1,0 +1,56 @@
+{% extends 'user_base.html' %}
+
+
+{% block content %}
+
+{% ifequal error "no" %}
+<script>
+    alert('notes uploaded successfully')
+    window.location=("{% url 'profile' %}");
+</script>
+{% endifequal %}
+
+{% ifequal error "yes" %}
+<script>
+    alert('Something went wrong, try again!')
+</script>
+{% endifequal %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="login-form">
+        <div class="form-txt">New Note</div>
+        <div class="input-box">
+            <input type="text" placeholder="" name="author" value="{{ user.username }}">
+        </div> 
+        <select name="branch" id="" class="dropdown">
+            <option value="">Select Branch</option>
+            <option value="cse">CSE</option>
+            <option value="ece">ECE</option>
+            <option value="eee">EEE</option>
+            <option value="it">IT</option>
+            <option value="mech">Mechanical</option>
+        </select>
+        <div class="input-box">
+            <input type="text" placeholder="subject" name="subject">
+        </div>
+        <div class="input-box">
+            <input type="file" placeholder="" name="notesfile">
+        </div>
+        <select name="filetype" id="" class="dropdown">
+            <option value="">Select File Type</option>
+            <option value="pdf">PDF</option>
+            <option value="ppt">PPT</option>
+            <option value="image">Image</option>
+            <option value="doc">Doc/Docx</option>
+            <option value="zip">Zip/Rar</option>
+        </select>
+        <div class="input-box">
+            <textarea placeholder="description" name="description"></textarea>
+        </div>
+
+        <button type="submit">Upload</button>
+    </div>
+</form>
+
+{% endblock content %}

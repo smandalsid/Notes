@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% ifequal error "no" %}
+<script>
+    alert('signed up successfully')
+    window.location=("{% url 'user_login' %}");
+</script>
+{% endifequal %}
+
+{% ifequal error "yes" %}
+<script>
+    alert('Something went wrong, try again!')
+</script>
+{% endifequal %}
+
+<h1>signup page</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="login-form">
+        <div class="form-txt">Signup</div>
+        <div class="input-box">
+            <input type="text" placeholder="Enter first name" name="first_name">
+        </div> 
+        <div class="input-box">
+            <input type="text" placeholder="Enter last name" name="last_name">
+        </div>
+        <div class="input-box">
+            <input type="text" placeholder="Enter registration number" name="regno">
+        </div>
+        <div class="input-box">
+            <input type="email" placeholder="Enter email" name="email">
+        </div>
+        <select name="branch" id="" class="dropdown">
+            <option value="cse">CSE</option>
+            <option value="ece">ECE</option>
+            <option value="eee">EEE</option>
+            <option value="it">IT</option>
+            <option value="mech">Mechanical</option>
+        </select>
+        <div class="input-box">
+            <input type="text" placeholder="Enter username" name="username">
+        </div>
+        <div class="input-box">
+            <input type="password" placeholder="Enter password" name="password">
+        </div>
+
+        <button type="submit">SignUp</button>
+    </div>
+</form>
+
+{% endblock content %}

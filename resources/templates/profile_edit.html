@@ -1,0 +1,63 @@
+{% extends 'user_base.html' %}
+
+{% block content %}
+
+<div class="edit-form">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="login-form">
+            <div class="form-txt">Edit Profile</div>
+            <div class="form-txt">
+                Username:
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="" name="username" value="{{ user.username }}">
+            </div>
+            <div class="form-txt">
+                First Name:
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="" name="first_name" value="{{ user.first_name }}">
+            </div>
+            <div class="form-txt">
+                Last Name:
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="" name="last_name" value="{{ user.last_name }}">
+            </div>
+            <div class="form-txt">
+                Registration Number:
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="" name="regno" value="{{ user.regno }}">
+            </div>
+            <div class="form-txt">
+                Email
+            </div>
+            <div class="input-box">
+                <input type="email" placeholder="" name="email" value="{{ user.email }}" readonly>
+            </div>
+            <div class="form-txt">
+                Branch:
+            </div>
+            <select class="dropdown" name="branch" id="" value="{{ user.branch }}">
+                <option value="cse">CSE</option>
+                <option value="ece">ECE</option>
+                <option value="eee">EEE</option>
+                <option value="it">IT</option>
+                <option value="mech">Mechanical</option>
+            </select>
+            <br>
+            <button type="submit">Update</button>
+        </div>
+    </form>
+</div>
+
+{% if not error %}
+<script>
+    alert('Profile Updated Successfully')
+    window.location = "{% url 'profile' %}";
+</script>
+{% endif %}
+
+{% endblock content %}

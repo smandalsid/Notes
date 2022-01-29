@@ -1,0 +1,17 @@
+{% extends 'user_base.html' %}
+
+{% block content %}
+
+<br><br>
+<p>Hi! {{ user.first_name }}</p>
+<br>
+<br>
+<p>This is the profile page</p>
+<br>
+<p>Full Name: {{ user.first_name }}  {{ user.last_name }}</p>
+<br>
+<p>RegNo: {{ user.regno }}</p>
+<br>
+<p>Branch: {{ user.branch }}</p>
+
+{% endblock content %}

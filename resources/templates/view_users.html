@@ -1,0 +1,31 @@
+{% extends 'admin_base.html' %}
+
+
+{% block content %}
+<br>
+<h1>Users:</h1>
+<table style="width:100%">
+    <tr>
+      <th>Sl. No.</th>
+      <th>Name</th>
+      <th>Reg No.</th> 
+      <th>Email</th>
+      <th>Branch</th>
+      <th>Action</th>
+    </tr>
+    
+    {% for x in users %}
+
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ x.first_name }} {{ x.last_name}}</td>
+        <td>{{ x.regno }}</td>
+        <td>{{ x.email }}</td>
+        <td>{{ x.branch }}</td>
+        <td><a href="{% url 'delete_user' x.id %}" onclick="return confirm('Are you sure?')">Delete</a></td>
+    </tr>
+
+    {% endfor %}
+  </table>
+
+{% endblock content %}

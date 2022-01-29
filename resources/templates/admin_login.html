@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% ifequal error "no" %}
+<script>
+    alert('Logged in successfully')
+    window.location=("{% url 'admin_home' %}");
+</script>
+{% endifequal %}
+
+{% ifequal error "yes" %}
+<script>
+    alert('Invalid login credentials, try again!')
+</script>
+{% endifequal %}
+
+<form method="post">
+    {% csrf_token %}
+    <div class="login-form">
+        <div class="form-txt">Admin Login Page</div>
+        <div class="form-txt">
+            Username:
+        </div>
+        <div class="input-box">
+            <input type="text" placeholder="Enter username" name="username">
+        </div> 
+        <div class="form-txt">
+            Password:
+        </div>
+        <div class="input-box">
+            <input type="password" placeholder="Enter password" name="password">
+        </div>
+        <button type="submit">Login</button>
+    </div>
+</form>
+
+{% endblock content %}

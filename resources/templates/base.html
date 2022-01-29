@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource App</title>
+    <link rel="stylesheet" href="{% static '/css/base.css' %}">
+</head>
+
+<body>
+    <nav>
+        <div class="left">
+            <img src="{% static '/images/logo.jpeg' %}" alt="">
+        </div>
+        <div class="center">
+            <span class="nav-item">Resource Sharing App</span>            
+        </div>
+        <div class="right">
+            <a href="{% url 'index' %}" class="nav-item-link">Home</a>
+            <a href="{% url 'about' %}" class="nav-item-link">About Us</a>
+            <a href="{% url 'contact' %}" class="nav-item-link">Contact Us</a>
+            <a href="{% url 'profile' %}" class="nav-item-link">User Profile</a>
+            <a href="{% url 'admin_login' %}" class="nav-item-link">Admin Login</a>
+            {% if user.is_authenticated %}
+            <div class="btns">
+                <button><a href="{% url 'logout' %}">Signout</a></button>
+            </div>
+            {% else %}
+            <div class="btns">
+                <button ><a href="{% url 'user_login' %}">Login</a></button> | 
+                <button><a href="{% url 'signup' %}">Signup</a></button>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+    <main>
+        {% block content %}
+        {% endblock content %}
+    </main>
+</body>
+
+</html>

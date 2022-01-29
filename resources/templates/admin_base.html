@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource App</title>
+    <link rel="stylesheet" href="{% static '/css/base.css' %}">
+</head>
+
+<body>
+    <nav>
+        <div class="left">
+            <img src="{% static '/images/logo.jpeg' %}" alt="">
+        </div>
+        <div class="center">
+            <span class="nav-item">Resource Sharing App</span>            
+        </div>
+        <div class="right">
+            <a href="{% url 'index' %}" class="nav-item-link">Home</a>
+            <a href="{% url 'admin_home' %}" class="nav-item-link">Admin Home</a>
+            <a href="{% url 'pending_notes' %}" class="nav-item-link">Pending</a>
+            <a href="{% url 'verified_notes' %}" class="nav-item-link">Verified</a>
+            <a href="{% url 'rejected_notes' %}" class="nav-item-link">Rejected</a>
+            <a href="{% url 'all_notes' %}" class="nav-item-link">All notes</a>
+            <a href="{% url 'view_users' %}" class="nav-item-link">Users</a>
+            <!-- <a href="{% url 'admin_login' %}" class="nav-item-link">Admin Login</a> -->
+            {% if user.is_authenticated %}
+            <div class="btns">
+                <button><a href="{% url 'logout' %}">Signout</a></button>
+            </div>
+            {% else %}
+            <div class="btns">
+                <button ><a href="{% url 'user_login' %}">Login</a></button> | 
+                <button><a href="{% url 'signup' %}">Signup</a></button>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+    <main>
+        {% block content %}
+        {% endblock content %}
+    </main>
+</body>
+
+</html>

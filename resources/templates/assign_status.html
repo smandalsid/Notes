@@ -1,0 +1,34 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+
+{% ifequal error "no" %}
+<script>
+    alert('status updated successfully')
+    window.location=("{% url 'pending_notes' %}");
+</script>
+{% endifequal %}
+
+{% ifequal error "yes" %}
+<script>
+    alert('Something went wrong, try again!')
+</script>
+{% endifequal %}
+
+<br>
+<form method="post">
+    {% csrf_token %}
+    <div class="login-form">
+        <div class="form-txt">Assign Note Status</div>
+        <select name="status" id="" class="dropdown">
+            <option value="">Select Status</option>
+            <option value="pending">Pending</option>
+            <option value="verified">Verified</option>
+            <option value="rejected">Rejected</option>
+        </select>
+
+        <button type="submit">Change</button>
+    </div>
+</form>
+
+{% endblock content %}
